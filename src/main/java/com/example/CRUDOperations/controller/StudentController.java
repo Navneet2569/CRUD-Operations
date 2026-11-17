@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.CRUDOperations.entity.Student;
 import com.example.CRUDOperations.service.StudentService;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -21,10 +23,10 @@ public class StudentController {
 
     // create student
     @PostMapping
-    public Student createStudent(@RequestBody Student student) {
+    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         System.out.println("Inside Student Controller");
         Student createdStudent = studentService.createStudent(student);
-        return createdStudent;
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdStudent);
     }
 
     // read student
