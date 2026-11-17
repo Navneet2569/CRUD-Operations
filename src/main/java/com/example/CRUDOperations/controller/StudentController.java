@@ -1,0 +1,35 @@
+package com.example.CRUDOperations.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.CRUDOperations.entity.Student;
+import com.example.CRUDOperations.service.StudentService;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+@RestController
+@RequestMapping("/api/students")
+public class StudentController {
+
+    private StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
+    // create student
+    @PostMapping
+    public Student createStudent(@RequestBody Student student) {
+        System.out.println("Inside Student Controller");
+        Student createdStudent = studentService.createStudent(student);
+        return createdStudent;
+    }
+
+    // read student
+
+    // update student
+
+    // delete student
+}

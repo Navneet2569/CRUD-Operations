@@ -1,12 +1,25 @@
 package com.example.CRUDOperations.entity;
 
-public class Student {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
+public class Student {
+    @Id
+    private Long id;
     private String name;
     private String email;
     private int age;
     private int rollNo;
-    private String Subject;
+    private String subject;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -41,11 +54,11 @@ public class Student {
     }
 
     public String getSubject() {
-        return Subject;
+        return subject;
     }
 
     public void setSubject(String subject) {
-        Subject = subject;
+        this.subject = subject;
     }
 
 }

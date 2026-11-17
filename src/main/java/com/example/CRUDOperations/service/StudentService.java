@@ -1,15 +1,23 @@
 package com.example.CRUDOperations.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+import com.example.CRUDOperations.entity.Student;
+import com.example.CRUDOperations.repository.StudentRepository;
+
+@Service
 public class StudentService {
 
-    // 1.End point listen (/app/students POST)
+    private StudentRepository studentRepository;
 
-    // 2. Business logic to save the student
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
-    // 3. Interact with the database
+    public Student createStudent(Student studentReq) {
+        System.out.println("Inside Student Service");
+        Student studentResp = studentRepository.saveStudent(studentReq);
+        return studentResp;
+    }
 
-    // 4.Response back to client
 }
