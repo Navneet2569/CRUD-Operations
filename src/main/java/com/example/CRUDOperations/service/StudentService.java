@@ -1,5 +1,7 @@
 package com.example.CRUDOperations.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.example.CRUDOperations.entity.Student;
@@ -17,6 +19,14 @@ public class StudentService {
     public Student createStudent(Student studentReq) {
         Student studentResp = studentRepository.save(studentReq);
         return studentResp;
+    }
+
+    public Student getStudent(Long id) {
+        Optional<Student> studentResp = studentRepository.findById(id);
+        if (studentResp.isPresent()) {
+            return studentResp.get();
+        }
+        return null;
     }
 
 }
