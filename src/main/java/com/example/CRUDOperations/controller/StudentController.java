@@ -24,7 +24,6 @@ public class StudentController {
     // create student
     @PostMapping
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
-        System.out.println("Inside Student Controller");
         Student createdStudent = studentService.createStudent(student);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdStudent);
     }
