@@ -1,5 +1,6 @@
 package com.example.CRUDOperations.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -27,6 +28,11 @@ public class StudentService {
             return studentResp.get();
         }
         return null;
+    }
+
+    public List<Student> getAllStudents() {
+        List<Student> studentsResp = studentRepository.findAll();
+        return studentsResp;
     }
 
 }

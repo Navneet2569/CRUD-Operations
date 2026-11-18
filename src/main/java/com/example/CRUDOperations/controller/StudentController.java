@@ -1,5 +1,7 @@
 package com.example.CRUDOperations.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +39,16 @@ public class StudentController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         return ResponseEntity.status(HttpStatus.OK).body(studentResp);
+    }
+
+    // read all students
+    @GetMapping
+    public ResponseEntity<List<Student>> getAllStudents() {
+        List<Student> studentsResp = studentService.getAllStudents();
+        if (studentsResp.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(studentsResp);
     }
 
     // update student
