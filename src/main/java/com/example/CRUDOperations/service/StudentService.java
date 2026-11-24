@@ -18,6 +18,7 @@ public class StudentService {
     }
 
     public Student createStudent(Student studentReq) {
+        studentReq.setDeleted(false);
         Student studentResp = studentRepository.save(studentReq);
         return studentResp;
     }
