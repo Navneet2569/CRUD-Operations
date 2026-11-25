@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.CRUDOperations.entity.Student;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
-    Optional<Student> findByIdAndDeletedFalse(Long id);
-    List<Student> findAllAndDeletedFalse();
+    Optional<Student> findByIdAndDeletedIsFalse(Long id);
+
+    List<Student> findAllAndDeletedIsFalse();
 }
