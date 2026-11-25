@@ -32,7 +32,7 @@ public class StudentService {
     }
 
     public List<Student> getAllStudents() {
-        List<Student> studentsResp = studentRepository.findAllAndDeletedIsFalse();
+        List<Student> studentsResp = studentRepository.findByDeletedIsFalse();
         return studentsResp;
     }
 
