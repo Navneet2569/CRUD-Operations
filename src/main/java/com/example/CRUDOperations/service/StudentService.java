@@ -60,6 +60,12 @@ public class StudentService {
     }
 
     public Boolean deleteStudentSoftly(Long id) {
-        return false;
+        Optional<Student> existingStudent = studentRepository.findByIdAndDeletedIsFalse(id);
+        if (existingStudent.isEmpty())
+            return false;
+        Student studentToSave = existingStudent.get();
+        studentToSave.setDeleted(true);
+        studentRepository.save(studentToSave);
+        return true;
     }
 }
