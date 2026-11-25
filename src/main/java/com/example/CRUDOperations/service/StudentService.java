@@ -24,7 +24,7 @@ public class StudentService {
     }
 
     public Student getStudent(Long id) {
-        Optional<Student> studentResp = studentRepository.findById(id);
+        Optional<Student> studentResp = studentRepository.findByIdAndDeletedFalse(id);
         if (studentResp.isPresent()) {
             return studentResp.get();
         }
@@ -32,7 +32,7 @@ public class StudentService {
     }
 
     public List<Student> getAllStudents() {
-        List<Student> studentsResp = studentRepository.findAll();
+        List<Student> studentsResp = studentRepository.findAllAndDeletedFalse();
         return studentsResp;
     }
 
@@ -56,5 +56,9 @@ public class StudentService {
             return false;
         studentRepository.deleteById(id);
         return true;
+    }
+
+    public Boolean deleteStudentSoftly(Long id) {
+        return false;
     }
 }
